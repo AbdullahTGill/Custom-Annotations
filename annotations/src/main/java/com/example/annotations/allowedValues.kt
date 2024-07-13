@@ -30,30 +30,3 @@ fun <T> validation(instance: T, functionName: String, vararg args: Any): Any? {
     }
     throw NoSuchMethodException("Function $functionName not found in class ${kClass.simpleName}")
 }
-
-// A sample class to demonstrate the annotations on methods
-class TestClass {
-
-    @AllowedValues(values = [1, 2, 3, 4, 5])
-    fun someFunction(x: Int, y: Int) {
-        println("Function called with x = $x and y = $y")
-    }
-
-    @AllowedValues(values = [10, 20, 30])
-    fun anotherFunction(x: Int) {
-        println("Another function called with x = $x")
-    }
-}
-
-// Running the main function
-fun main() {
-    val testInstance = TestClass()
-
-    try {
-        validation(testInstance, "someFunction", 3, 7)
-        validation(testInstance, "anotherFunction", 20)
-        validation(testInstance, "someFunction", 6, 7)  // This should throw an exception
-    } catch (e: Exception) {
-        println(e.message)
-    }
-}
