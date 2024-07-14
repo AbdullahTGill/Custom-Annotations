@@ -1,5 +1,4 @@
 package com.example.annotations
-
 import kotlin.reflect.full.findAnnotation
 import kotlin.reflect.full.functions
 import kotlin.reflect.jvm.isAccessible
@@ -9,7 +8,7 @@ import kotlin.reflect.jvm.isAccessible
 @Retention(AnnotationRetention.RUNTIME)
 annotation class AllowedValues(val values: IntArray)
 
-// Function that implements the validation on all the annotated functions so they only accept a set of values of x
+// Function that implements the validation on all the annotated functions so they only accept a set of values of x.
 fun <T> validation(instance: T, functionName: String, vararg args: Any): Any? {
     val kClass = instance!!::class
     val function = kClass.functions.find { it.name == functionName }
